@@ -10,7 +10,7 @@ from aiogram.enums import ParseMode
 from aiogram import Bot, Dispatcher, F, Router, html
 from aiogram.fsm.state import State, StatesGroup
 from aiogram.fsm.context import FSMContext
-from aiogram.types import Message, CallbackQuery, ReplyKeyboardRemove
+from aiogram.types import Message, ReplyKeyboardRemove
 from aiogram.filters import CommandStart
 
 load_dotenv()
@@ -80,10 +80,7 @@ async def process_name(message: Message, state: FSMContext) -> None:
          control2 = ', '.join(map(str, control))
          god = data['Год'].unique()
          god2= ', '.join(map(str, god))
-         await message.answer(f'В исходном дататесте содержалось {kol_vo}, оценок из них них, {kol_group}, относящихся к группе {group["name"]}')
-         await message.answer(f'В датасете находятся оценки  {kol_stud} студентов со следующими личными номерами: {number_stud2}')
-         await message.answer(f'Используемые формы контроля: {control2}')
-         await message.answer(f'Данные представлены по следующим годам: {god2}')
+         await message.answer(f'В исходном дататесте содержалось {kol_vo}, оценок из них них, {kol_group}, относящихся к группе {group["name"]}. В датасете находятся оценки  {kol_stud} студентов со следующими личными номерами: {number_stud2}. Используемые формы контроля: {control2}. Данные представлены по следующим годам: {god2}.')
       except:
          await message.answer(f"Загрузите другой файл, данный файл не подлежит обрабоке.")
 
